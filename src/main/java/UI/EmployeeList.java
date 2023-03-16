@@ -1,9 +1,8 @@
-package main.java.UI;
+package UI;
 
 
-import main.java.Data.Employee.Employee;
-import main.java.Data.Employee.EmployeeRepository;
-import main.java.Data.Employee.WithAllowance;
+import Data.Employee.Employee;
+import Data.Employee.EmployeeRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -44,16 +43,7 @@ public class EmployeeList extends Menu {
                 }
             }
 
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            System.out.println("Income of user " + employee.getAccount());
-            System.out.printf("Reward Salary: %.0f\n", employee.calReward());
-            if (employee instanceof WithAllowance) {
-                System.out.printf("Monthly Allowance: %.0f\n",((WithAllowance) employee).calAllowance());
-            }
-
-            System.out.printf("Monthly Income: %.0f\n", employee.calMonthlyIncome());
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            break;
+            new EmployeeInfo(employee).run();
         }
     }
 }

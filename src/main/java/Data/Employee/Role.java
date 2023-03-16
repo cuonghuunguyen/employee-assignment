@@ -1,4 +1,4 @@
-package main.java.Data;
+package Data.Employee;
 
 public enum Role {
     MANAGEMENT(1),

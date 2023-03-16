@@ -1,11 +1,8 @@
-package main.java.Data.Employee;
-
-
-import main.java.Data.Role;
+package Data.Employee;
 
 import java.util.Date;
 
-public class Leader extends Employee implements WithAllowance {
+public class Leader extends Employee {
     private int reviewTaskNumber;
     private int supportTaskNumber;
 
@@ -13,6 +10,7 @@ public class Leader extends Employee implements WithAllowance {
         super(id, account, Role.LEADER, workingStartDate, productivityScore);
         this.setReviewTaskNumber(reviewTaskNumber);
         this.setSupportTaskNumber(supportTaskNumber);
+        this.calMonthlyIncome();
     }
 
     public int getReviewTaskNumber() {
@@ -31,17 +29,10 @@ public class Leader extends Employee implements WithAllowance {
         this.supportTaskNumber = supportTaskNumber;
     }
 
-    public float calAllowance() {
-        int workingMonths = this.getWorkingMonth();
-        if (workingMonths >= 36) {
-            return 2000000 * this.getProductivityScore();
-        } else {
-            return 1200000 * this.getProductivityScore();
-        }
-    }
-
     @Override
-    public float calMonthlyIncome() {
-        return (this.reviewTaskNumber * 4000000) + (this.supportTaskNumber * 400000) + this.calReward() + this.calAllowance();
+    public void calMonthlyIncome() {
+        this.calReward();
+        this.calAllowance();
+        this.setMonthlyIncome((this.reviewTaskNumber * 4000000) + (this.supportTaskNumber * 400000) + this.getReward() + this.getAllowance());
     }
 }

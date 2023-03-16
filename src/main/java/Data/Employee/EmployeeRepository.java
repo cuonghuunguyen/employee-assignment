@@ -1,10 +1,13 @@
-package main.java.Data.Employee;
+package Data.Employee;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeRepository {
-    protected ArrayList<Employee> employees = new ArrayList<>();
+    protected List<Employee> employees = new ArrayList<>();
     private static EmployeeRepository instance = null;
     private EmployeeRepository() {}
 
@@ -38,7 +41,11 @@ public class EmployeeRepository {
         this.employees.addAll(employees);
     }
 
-    public ArrayList<Employee> findAll() {
+    public List<Employee> findAll() {
         return this.employees;
+    }
+    
+    public void sortByMonthlyIncomeAndAccount() {
+        this.employees = this.employees.stream().sorted(Comparator.comparing(Employee::getMonthlyIncome).thenComparing(Employee::getAccount, Comparator.reverseOrder())).collect(Collectors.toList());
     }
 }

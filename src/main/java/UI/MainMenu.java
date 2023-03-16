@@ -1,9 +1,9 @@
-package main.java.UI;
+package UI;
 
 
-import main.java.Data.Employee.*;
-import main.java.Data.Exceptions.ValidationException;
-import main.java.Data.Role;
+import Data.Employee.*;
+import Data.Exceptions.ValidationException;
+import Data.Employee.Role;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -74,7 +74,7 @@ public class MainMenu extends Menu {
             }
             case 2: {
                 EmployeeRepository employeeRepository = EmployeeRepository.getInstance();
-                ArrayList<Employee> employees = employeeRepository.findAll();
+                List<Employee> employees = employeeRepository.findAll();
                 List<String> selections = employees.stream().map(employee -> String.format("[%s] %s", employee.getId(), employee.getAccount())).collect(Collectors.toList());
                 new EmployeeList(selections).run();
             }

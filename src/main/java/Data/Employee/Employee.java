@@ -1,7 +1,6 @@
-package main.java.Data.Employee;
+package Data.Employee;
 
-import main.java.Data.Exceptions.ValidationException;
-import main.java.Data.Role;
+import Data.Exceptions.ValidationException;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -15,6 +14,9 @@ public abstract class Employee {
 
     private Date workingStartDate;
     private float productivityScore;
+    private float monthlyIncome;
+    private float reward;
+    private float allowance;
 
     public Employee(String id, String account, Role role, Date workingStartDate, float productivityScore) throws Exception {
         this.setId(id);
@@ -76,7 +78,33 @@ public abstract class Employee {
         this.workingStartDate = workingStartDate;
     }
 
-    public abstract float calMonthlyIncome();
+    public float getMonthlyIncome() {
+        return monthlyIncome;
+    }
+
+    public void setMonthlyIncome(float monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
+    }
+
+    public float getReward() {
+        return reward;
+    }
+
+    public void setReward(float reward) {
+        this.reward = reward;
+    }
+
+    public float getAllowance() {
+        return allowance;
+    }
+
+    public void setAllowance(float allowance) {
+        this.allowance = allowance;
+    }
+
+    
+    
+    public abstract void calMonthlyIncome();
 
     protected int getWorkingMonth() {
         LocalDate localDateTime = LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.workingStartDate));
@@ -84,7 +112,16 @@ public abstract class Employee {
         return period.getMonths();
     }
 
-    public float calReward() {
-        return this.productivityScore * 3000000;
+    public void calReward() {
+        this.reward = this.productivityScore * 3000000;
+    }
+    
+    public void calAllowance() {
+        int workingMonths = this.getWorkingMonth();
+        if (workingMonths >= 36) {
+            this.allowance = 2000000 * this.getProductivityScore();
+        } else {
+            this.allowance = 1200000 * this.getProductivityScore();
+        }
     }
 }

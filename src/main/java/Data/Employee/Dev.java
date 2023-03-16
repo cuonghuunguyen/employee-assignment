@@ -1,6 +1,4 @@
-package main.java.Data.Employee;
-
-import main.java.Data.Role;
+package Data.Employee;
 
 import java.util.Date;
 
@@ -10,6 +8,7 @@ public class Dev extends Employee {
     public Dev(String id, String account, Date workingStartDate, float productivityScore, int doneTaskNumber) throws Exception {
         super(id, account, Role.DEV, workingStartDate, productivityScore);
         this.setDoneTaskNumber(doneTaskNumber);
+        this.calMonthlyIncome();
     }
 
     public int getDoneTaskNumber() {
@@ -21,8 +20,10 @@ public class Dev extends Employee {
     }
 
     @Override
-    public float calMonthlyIncome() {
-        return (this.DoneTaskNumber * 1500000) + this.calReward();
+    public void calMonthlyIncome() {
+        this.calAllowance();
+        this.calReward();
+        this.setMonthlyIncome((this.DoneTaskNumber * 1500000) + this.getReward() + this.getAllowance());
     }
 
 }

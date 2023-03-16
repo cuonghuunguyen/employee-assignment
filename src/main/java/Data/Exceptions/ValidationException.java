@@ -1,4 +1,4 @@
-package main.java.Data.Exceptions;
+package Data.Exceptions;
 
 public class ValidationException extends Exception {
     public ValidationException(String message) {
