@@ -12,9 +12,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class MainMenu extends Menu {
+    EmployeeRepository employeeRepository = EmployeeRepository.getInstance();
     public MainMenu() {
-        super("MAIN MENU", Arrays.asList("Import employees from CSV", "Calculate salary"));
+        super("MAIN MENU", Arrays.asList("Import employees from CSV", "Edit employee", "Sort employees list"));
     }
+
 
     @Override
     public void executeSelection(int id) {
@@ -77,6 +79,9 @@ public class MainMenu extends Menu {
                 List<Employee> employees = employeeRepository.findAll();
                 List<String> selections = employees.stream().map(employee -> String.format("[%s] %s", employee.getId(), employee.getAccount())).collect(Collectors.toList());
                 new EmployeeList(selections).run();
+            }
+            case 3: {
+                new SortEmployeeList().run();
             }
         }
     }

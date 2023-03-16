@@ -29,8 +29,14 @@ public abstract class Menu {
     public abstract void executeSelection(int id);
 
     protected int getSelection() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+       while (true) {
+           try {
+               Scanner scanner = new Scanner(System.in);
+               return scanner.nextInt();
+           } catch (Exception exception) {
+               System.out.println("Invalid selection, please try again: ");
+           }
+       }
     }
 
     public void run() {

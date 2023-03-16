@@ -18,15 +18,13 @@ public class EmployeeInfo extends Menu {
     public void executeSelection(int id) {
         switch (id) {
             case 1: {
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                 
-                System.out.println("Income of user " + employee.getAccount());
+                System.out.println(">   Income of user " + employee.getAccount());
                 
-                System.out.printf("Reward Salary: %.0f\n", employee.getReward());
-                System.out.printf("Monthly Allowance: %.0f\n", employee.getAllowance());
-                System.out.printf("Monthly Income: %.0f\n", employee.getMonthlyIncome());
-                
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                System.out.printf(">   Reward Salary: %.0f\n", employee.getReward());
+                System.out.printf(">   Monthly Allowance: %.0f\n", employee.getAllowance());
+                System.out.printf(">   Monthly Income: %.0f\n", employee.getMonthlyIncome());
+
                 break;
             }
             case 2: {

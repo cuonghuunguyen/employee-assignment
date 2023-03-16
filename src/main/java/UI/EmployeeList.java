@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class EmployeeList extends Menu {
     public EmployeeList(List<String> selections) {
-        super("EMPLOYEE LIST", selections);
+        super("EDIT EMPLOYEE", selections);
     }
 
     @Override

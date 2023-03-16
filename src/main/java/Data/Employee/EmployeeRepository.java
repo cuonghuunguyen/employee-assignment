@@ -46,6 +46,10 @@ public class EmployeeRepository {
     }
     
     public void sortByMonthlyIncomeAndAccount() {
-        this.employees = this.employees.stream().sorted(Comparator.comparing(Employee::getMonthlyIncome).thenComparing(Employee::getAccount, Comparator.reverseOrder())).collect(Collectors.toList());
+        this.employees = this.employees.stream().sorted(Comparator.comparing(Employee::getRole).thenComparing(Employee::getAccount, Comparator.reverseOrder())).collect(Collectors.toList());
+    }
+
+    public void sortByRoleAndID() {
+        this.employees = this.employees.stream().sorted(Comparator.comparing(Employee::getRole).thenComparing(Employee::getId)).collect(Collectors.toList());
     }
 }

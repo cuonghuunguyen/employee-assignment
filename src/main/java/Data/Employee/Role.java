@@ -15,6 +15,9 @@ public enum Role {
     public int getRoleId() {
         return this.roleId;
     }
+    public String getRoleName() {
+        return this.name();
+    }
 
     public static Role fromId(int roleId) {
         switch (roleId) {
