@@ -8,6 +8,8 @@ public class Dev extends Employee {
     public Dev(String id, String account, Date workingStartDate, float productivityScore, int doneTaskNumber) throws Exception {
         super(id, account, Role.DEV, workingStartDate, productivityScore);
         this.setDoneTaskNumber(doneTaskNumber);
+        this.calAllowance();
+        this.calReward();
         this.calMonthlyIncome();
     }
 
@@ -21,8 +23,6 @@ public class Dev extends Employee {
 
     @Override
     public void calMonthlyIncome() {
-        this.calAllowance();
-        this.calReward();
         this.setMonthlyIncome((this.DoneTaskNumber * 1500000) + this.getReward() + this.getAllowance());
     }
 

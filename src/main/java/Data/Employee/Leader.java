@@ -10,6 +10,8 @@ public class Leader extends Employee {
         super(id, account, Role.LEADER, workingStartDate, productivityScore);
         this.setReviewTaskNumber(reviewTaskNumber);
         this.setSupportTaskNumber(supportTaskNumber);
+        this.calAllowance();
+        this.calReward();
         this.calMonthlyIncome();
     }
 
@@ -31,8 +33,6 @@ public class Leader extends Employee {
 
     @Override
     public void calMonthlyIncome() {
-        this.calReward();
-        this.calAllowance();
         this.setMonthlyIncome((this.reviewTaskNumber * 4000000) + (this.supportTaskNumber * 400000) + this.getReward() + this.getAllowance());
     }
 }

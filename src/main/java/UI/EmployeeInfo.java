@@ -39,6 +39,7 @@ public class EmployeeInfo extends Menu {
                 Scanner sc = new Scanner(System.in);
                 float input = sc.nextFloat();
                 employee.setAllowance(input);
+                employee.calMonthlyIncome();
                 break;
             }
             case 4: {
@@ -46,6 +47,7 @@ public class EmployeeInfo extends Menu {
                 Scanner sc = new Scanner(System.in);
                 float input = sc.nextFloat();
                 employee.setReward(input);
+                employee.calMonthlyIncome();
                 break;
             }
         }
